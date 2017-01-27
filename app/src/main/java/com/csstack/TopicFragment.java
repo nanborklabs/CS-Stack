@@ -23,13 +23,14 @@ import java.util.List;
  *
  * when a topic is cliced show {@link WebviewActivity wit Url}
  */
-public class TopicFragment  extends Fragment{
+public class TopicFragment  extends Fragment implements TopicListAdapter.TopicCallback {
 
 
     TopicListAdapter mAdapter = null;
     private String year;
     private String subject;
     private String unit;
+    private Context mContext;
 
     @Override
     public void onDestroyView() {
@@ -49,6 +50,7 @@ public class TopicFragment  extends Fragment{
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        mContext = context;
     }
 
     @Override
@@ -77,7 +79,7 @@ public class TopicFragment  extends Fragment{
 
         RecyclerView mLsitView = (RecyclerView) mView.findViewById(R.id.topic_list);
 
-        mAdapter  = new TopicListAdapter();
+        mAdapter  = new TopicListAdapter(mContext,mTopicsList,this);
         mLsitView.setLayoutManager(new LinearLayoutManager(getContext()));
         mLsitView.setAdapter(mAdapter);
 
@@ -111,5 +113,10 @@ public class TopicFragment  extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void showURL(String url) {
+
     }
 }
