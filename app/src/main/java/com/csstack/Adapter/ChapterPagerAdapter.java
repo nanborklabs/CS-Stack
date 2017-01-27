@@ -1,8 +1,10 @@
-package com.csstack;
+package com.csstack.Adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.csstack.TopicFragment;
 
 /**
  * Created by nandhu on 26/1/17.

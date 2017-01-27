@@ -1,9 +1,11 @@
-package com.csstack;
+package com.csstack.Adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.csstack.R;
 
 /**
  * Created by nandhu on 26/1/17.

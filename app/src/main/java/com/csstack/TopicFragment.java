@@ -10,6 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.csstack.Activity.WebviewActivity;
+import com.csstack.Adapter.TopicListAdapter;
+import com.csstack.Model.Topic;
+
+import java.util.List;
+
 /**
  * Created by nandhu on 26/1/17.
  *
@@ -21,6 +27,10 @@ public class TopicFragment  extends Fragment{
 
 
     TopicListAdapter mAdapter = null;
+    private String year;
+    private String subject;
+    private String unit;
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -50,6 +60,20 @@ public class TopicFragment  extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View mView = LayoutInflater.from(getContext()).inflate(R.layout.topic_frag_layout,container,false);
+
+
+        if(getArguments() != null){
+            //get The Year
+            year = getArguments().getString("YEAR");
+            subject =  getArguments().getString("SUBJECT");
+            unit  = getArguments().getString("UNIT");
+        }
+        else{
+            throw new NullPointerException("Arguments cannot be null");
+        }
+
+
+        List<Topic> mTopicsList = TopicUtils.getTopics(year,subject,unit);
 
         RecyclerView mLsitView = (RecyclerView) mView.findViewById(R.id.topic_list);
 
